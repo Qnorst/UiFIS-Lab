@@ -1,0 +1,41 @@
+﻿<Window x:Class="TaskSearchWPF.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskSearchWPF"
+        mc:Ignorable="d"
+        Title="Меню" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Профиль">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="246"/>
+                        <ColumnDefinition Width="52"/>
+                        <ColumnDefinition Width="502"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Профиль" FontSize="15"  Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,39,0,0" Height="20" Width="63"/>
+                    <TextBlock Text="Мои анкеты" FontSize="15"  Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,33,0,0" Height="20" Width="84"/>
+                    <TextBlock Text="Имя:" FontSize="13"  Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="39,70,0,0" Height="17" Width="28" RenderTransformOrigin="0.214,1.475"/>
+                    <TextBlock Text="Фамилия:" FontSize="13"  Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="14,112,0,0" Height="17" Width="56"/>
+                    <TextBlock Text="Ник:" FontSize="13"  Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="23,0,0,0" Height="17" Width="39"/>
+                    
+
+                    <TextBox Name="UserName" Text="{Binding UserName}" IsReadOnly="True" FontSize="13" Margin="74,64,2,313"/>
+                    <TextBox Name="UserSurname" Text="{Binding UserSurname}" FontSize="13" Margin="77,107,0,272"/>
+                    <TextBox Name="UserNick" Text="{Binding UserNick}" FontSize="13" Margin="77,193,0,186"/>
+                    <DataGrid Name="UserFormsDGrid" ColumnWidth="*" Grid.Column="2" Grid.Row="0" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" CanUserSortColumns="True" Margin="30,55,30,131" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Игра" Width="110" Binding="{Binding Game.GameName}" CanUserSort="False"/>
+                            <DataGridTextColumn Header="Роль" Width="130" Binding="{Binding InTeamStatus.InTeamStatusName}" CanUserSort="False"/>
+                            <DataGridTextColumn Header="Описание" Width="200" Binding="{Binding FormText}" CanUserSort="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Выйти" Name="LogOutBtn" Click="LogOutBtn_Click" HorizontalAlignment="Left" Margin="118,345,0,0" VerticalAlignment="Top" Height="24" Width="82"/>
+                    <Button Grid.Column="2" Name="CreateFormBtn" Click="CreateFormBtn_Click" Content="Создать задание" HorizontalAlignment="Center" Margin="0,345,0,0" VerticalAlignment="Top" Height="24" Width="144"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
